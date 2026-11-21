@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurelia — Hotel by the Sea</title>
+  <link rel="icon" type="image/x-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="loader" aria-hidden="true">
+    <div class="door door-left"></div>
+    <div class="door door-right"></div>
+    <div class="loader-mark">
+      <svg viewBox="0 0 60 60">
+        <path d="M10 52V26a20 20 0 0 1 40 0v26" />
+        <path d="M18 52V28a12 12 0 0 1 24 0v24" />
+        <path d="M4 52h52" />
+      </svg>
+      <p>Aurelia</p>
+      <span>Hotel by the sea</span>
+    </div>
+  </div>
+
+  <input type="checkbox" id="navToggle" class="nav-toggle">
+
+  <header class="header">
+    <div class="container header-bar">
+      <a href="#home" class="logo">
+        <svg viewBox="0 0 60 60" aria-hidden="true">
+          <path d="M10 52V26a20 20 0 0 1 40 0v26" />
+          <path d="M18 52V28a12 12 0 0 1 24 0v24" />
+          <path d="M4 52h52" />
+        </svg>
+        <span>Aurelia</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#floor">Floor plan</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#book">Booking</a>
+        <a href="#account">Account</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#book" class="btn btn-small btn-brass header-book">Book now</a>
+        <button class="stay-btn" id="cartOpen" type="button" aria-label="Open your stay">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 18V8M3 14h18v4M21 18v-4a3 3 0 0 0-3-3h-7v3" />
+            <circle cx="7" cy="11" r="2" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <label for="navToggle" class="burger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=2000&q=80" alt="Hotel pool surrounded by palm trees at sunset">
+      </div>
+      <div class="container hero-content">
+        <p class="eyebrow eyebrow-light">Seaside hotel &middot; Since 1962</p>
+        <h1>A quiet place <em>by the sea.</em></h1>
+        <p class="hero-lead">Forty-two rooms and suites, a rooftop pool and slow breakfasts on the terrace. Aurelia is where the city ends and the sea begins.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn btn-brass">Book your stay</a>
+          <a href="#rooms" class="btn btn-line-light">Explore rooms</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-bar">
+          <div>
+            <span>Check-in</span>
+            <b>From 14:00</b>
+          </div>
+          <div>
+            <span>Check-out</span>
+            <b>Until 12:00</b>
+          </div>
+          <div>
+            <span>Rooms from</span>
+            <b>$140 / night</b>
+          </div>
+          <div>
+            <span>Cancellation</span>
+            <b>Free up to 48 h</b>
+          </div>
+          <a href="#book" class="hero-bar-link">
+            Check availability
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro section">
+      <div class="container intro-grid">
+        <div class="intro-media reveal">
+          <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=1200&q=80" alt="Pale hotel facade with balconies among palm trees">
+          <div class="intro-stamp">
+            <b>4.9</b>
+            <span>Guest rating</span>
+          </div>
+        </div>
+        <div class="intro-text reveal">
+          <p class="eyebrow">Welcome to Aurelia</p>
+          <h2>Sixty years of <em>slow mornings.</em></h2>
+          <p>Built in 1962 as a small family guesthouse, Aurelia has grown into a hotel of forty-two rooms without losing its calm. Linen curtains, stone floors and wide balconies face the water, and every room opens to fresh sea air.</p>
+          <p>We keep things simple: comfortable beds, honest food and people who remember your name.</p>
+          <dl class="intro-facts">
+            <div>
+              <dt>42</dt>
+              <dd>Rooms and suites</dd>
+            </div>
+            <div>
+              <dt>3 min</dt>
+              <dd>Walk to the beach</dd>
+            </div>
+            <div>
+              <dt>24 h</dt>
+              <dd>Reception and service</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms section" id="rooms">
+      <input type="radio" name="roomFilter" id="showAll" checked>
+      <input type="radio" name="roomFilter" id="showRooms">
+      <input type="radio" name="roomFilter" id="showSuites">
+
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Rooms and suites</p>
+            <h2>Choose where <em>you wake up.</em></h2>
+          </div>
+          <div class="filters">
+            <label for="showAll">All</label>
+            <label for="showRooms">Rooms</label>
+            <label for="showSuites">Suites</label>
+          </div>
+        </div>
+
+        <div class="room-grid">
+          <article class="room type-room">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1631049421450-348ccd7f8949?auto=format&fit=crop&w=900&q=80" alt="White bed in a grey hotel bedroom">
+              <span class="room-price"><b>$140</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Classic Room</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>24 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>2 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11" /><path d="M10 20v-6h4v6" /></svg>City view</li>
+              </ul>
+              <p>A calm, light room with a queen bed, rain shower and a small writing desk by the window.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Classic Room" data-price="140">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Classic Room">Book</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room type-room">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1680210851458-b7dc5685e06e?auto=format&fit=crop&w=900&q=80" alt="Hotel room with two beds and a sofa">
+              <span class="room-price"><b>$160</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Twin Room</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>28 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>2 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z" /></svg>Garden view</li>
+              </ul>
+              <p>Two single beds and a sofa corner, made for friends travelling together or colleagues on a trip.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Twin Room" data-price="160">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Twin Room">Book</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room type-room">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1548612486-94d786319018?auto=format&fit=crop&w=900&q=80" alt="Hotel bed in warm morning light">
+              <span class="room-price"><b>$180</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Garden Room</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>30 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>2 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z" /></svg>Private terrace</li>
+              </ul>
+              <p>Morning sun, a king bed and a small terrace with two chairs looking over the olive garden.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Garden Room" data-price="180">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Garden Room">Book</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room type-room">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1702255489644-392758161f1f?auto=format&fit=crop&w=900&q=80" alt="Hotel room with a bed, chair and window">
+              <span class="room-price"><b>$210</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Deluxe King</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>34 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>2 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 11c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></svg>Sea view</li>
+              </ul>
+              <p>Our most loved room: a wide king bed, a reading chair and a balcony right above the waves.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Deluxe King" data-price="210">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Deluxe King">Book</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room type-suite">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1629078691977-dc51747c0263?auto=format&fit=crop&w=900&q=80" alt="Suite bedroom with white linen at twilight">
+              <span class="room-price"><b>$290</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Twilight Suite</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>48 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>3 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 11c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></svg>Sea view</li>
+              </ul>
+              <p>A separate living room, a deep bathtub and long sunset views over the bay from every window.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Twilight Suite" data-price="290">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Twilight Suite">Book</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room type-suite">
+            <div class="room-img">
+              <img src="https://images.unsplash.com/photo-1552858725-2758b5fb1286?auto=format&fit=crop&w=900&q=80" alt="Dark hotel suite with a warm bedside lamp">
+              <span class="room-price"><b>$340</b> / night</span>
+            </div>
+            <div class="room-body">
+              <h3>Evening Suite</h3>
+              <ul class="room-meta">
+                <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" /><path d="M4 9h5V4" /></svg>56 m²</li>
+                <li><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 5a3 3 0 0 1 0 6M18 14c2 .8 3 3 3 6" /></svg>4 guests</li>
+                <li><svg viewBox="0 0 24 24"><path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 11c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></svg>Corner balcony</li>
+              </ul>
+              <p>Our top-floor corner suite with two bedrooms, a dining table for four and a wraparound balcony.</p>
+              <div class="room-actions">
+                <button class="add-btn" type="button" data-name="Evening Suite" data-price="340">Add 1 night</button>
+                <a href="#book" class="room-link" data-room="Evening Suite">Book</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="floor section" id="floor">
+      <input type="radio" name="pick" id="r401" checked>
+      <input type="radio" name="pick" id="r403">
+      <input type="radio" name="pick" id="r404">
+      <input type="radio" name="pick" id="r405">
+      <input type="radio" name="pick" id="r407">
+      <input type="radio" name="pick" id="r408">
+
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow eyebrow-light">New &middot; Pick your room</p>
+            <h2>Choose the exact <em>room number.</em></h2>
+          </div>
+          <p class="head-note">This is our fourth floor. Sea rooms face north, garden rooms face south. Click a free room on the plan to see it.</p>
+        </div>
+
+        <div class="floor-grid reveal">
+          <div class="plan-wrap">
+            <div class="plan">
+              <div class="plan-side plan-sea">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 11c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></svg>
+                Sea side
+              </div>
+
+              <label for="r401" class="unit u401"><b>401</b><span>Deluxe King</span></label>
+              <div class="unit u402 booked"><b>402</b><span>Booked</span></div>
+              <label for="r403" class="unit u403"><b>403</b><span>Twilight Suite</span></label>
+              <label for="r404" class="unit u404"><b>404</b><span>Evening Suite</span></label>
+
+              <div class="corridor">
+                <span>Corridor</span>
+                <span class="lift">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1" /><path d="M9 9l3-3 3 3M9 15l3 3 3-3" /></svg>
+                  Lift
+                </span>
+              </div>
+
+              <label for="r405" class="unit u405"><b>405</b><span>Classic Room</span></label>
+              <div class="unit u406 booked"><b>406</b><span>Booked</span></div>
+              <label for="r407" class="unit u407"><b>407</b><span>Garden Room</span></label>
+              <label for="r408" class="unit u408"><b>408</b><span>Twin Room</span></label>
+
+              <div class="plan-side plan-garden">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z" /><path d="M12 21v-8" /></svg>
+                Garden side
+              </div>
+            </div>
+
+            <div class="plan-legend">
+              <span><i class="dot dot-free"></i>Free</span>
+              <span><i class="dot dot-picked"></i>Your pick</span>
+              <span><i class="dot dot-booked"></i>Booked</span>
+            </div>
+          </div>
+
+          <div class="picks">
+            <div class="pick-card p401">
+              <img src="https://images.unsplash.com/photo-1702255489644-392758161f1f?auto=format&fit=crop&w=900&q=80" alt="Deluxe King room">
+              <div class="pick-body">
+                <span class="pick-no">Room 401</span>
+                <h3>Deluxe King</h3>
+                <p>Sea view balcony, fourth floor, quiet end of the corridor.</p>
+                <div class="pick-row">
+                  <b>$210<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 401, Deluxe King" data-price="210">Reserve 401</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pick-card p403">
+              <img src="https://images.unsplash.com/photo-1629078691977-dc51747c0263?auto=format&fit=crop&w=900&q=80" alt="Twilight Suite">
+              <div class="pick-body">
+                <span class="pick-no">Room 403</span>
+                <h3>Twilight Suite</h3>
+                <p>Living room and bathtub with a view of the sunset over the bay.</p>
+                <div class="pick-row">
+                  <b>$290<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 403, Twilight Suite" data-price="290">Reserve 403</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pick-card p404">
+              <img src="https://images.unsplash.com/photo-1552858725-2758b5fb1286?auto=format&fit=crop&w=900&q=80" alt="Evening Suite">
+              <div class="pick-body">
+                <span class="pick-no">Room 404</span>
+                <h3>Evening Suite</h3>
+                <p>Corner suite with two bedrooms and a wraparound balcony.</p>
+                <div class="pick-row">
+                  <b>$340<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 404, Evening Suite" data-price="340">Reserve 404</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pick-card p405">
+              <img src="https://images.unsplash.com/photo-1631049421450-348ccd7f8949?auto=format&fit=crop&w=900&q=80" alt="Classic Room">
+              <div class="pick-body">
+                <span class="pick-no">Room 405</span>
+                <h3>Classic Room</h3>
+                <p>Garden side, close to the lift. Very quiet at night.</p>
+                <div class="pick-row">
+                  <b>$140<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 405, Classic Room" data-price="140">Reserve 405</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pick-card p407">
+              <img src="https://images.unsplash.com/photo-1548612486-94d786319018?auto=format&fit=crop&w=900&q=80" alt="Garden Room">
+              <div class="pick-body">
+                <span class="pick-no">Room 407</span>
+                <h3>Garden Room</h3>
+                <p>Private terrace over the olive garden with morning sun.</p>
+                <div class="pick-row">
+                  <b>$180<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 407, Garden Room" data-price="180">Reserve 407</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pick-card p408">
+              <img src="https://images.unsplash.com/photo-1680210851458-b7dc5685e06e?auto=format&fit=crop&w=900&q=80" alt="Twin Room">
+              <div class="pick-body">
+                <span class="pick-no">Room 408</span>
+                <h3>Twin Room</h3>
+                <p>Two single beds and a sofa, garden side corner room.</p>
+                <div class="pick-row">
+                  <b>$160<small> / night</small></b>
+                  <button class="add-btn" type="button" data-name="Room 408, Twin Room" data-price="160">Reserve 408</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facilities section" id="facilities">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Facilities</p>
+            <h2>Everything close, <em>nothing rushed.</em></h2>
+          </div>
+          <p class="head-note">Hover a panel to open it. All facilities are free for hotel guests.</p>
+        </div>
+
+        <div class="panels reveal">
+          <article class="panel">
+            <img src="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=1200&q=80" alt="Blue rooftop swimming pool">
+            <div class="panel-body">
+              <span class="panel-no">01</span>
+              <h3>Rooftop pool</h3>
+              <p>Heated all year, open 7:00 – 22:00, with towels and loungers.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <img src="https://images.unsplash.com/photo-1754557619846-0574960c5f3f?auto=format&fit=crop&w=1200&q=80" alt="Elegant restaurant table setting">
+            <div class="panel-body">
+              <span class="panel-no">02</span>
+              <h3>Restaurant</h3>
+              <p>Mediterranean dinners with fish from the morning market.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <img src="https://images.unsplash.com/photo-1744352029595-28cba50e6fa0?auto=format&fit=crop&w=1200&q=80" alt="Restaurant tables with umbrellas overlooking the ocean">
+            <div class="panel-body">
+              <span class="panel-no">03</span>
+              <h3>Sea terrace</h3>
+              <p>Breakfast from 7:00 to 11:00 under the umbrellas by the water.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <img src="https://images.unsplash.com/photo-1591920476948-da986641e66a?auto=format&fit=crop&w=1200&q=80" alt="Wooden tables and chairs in a hotel bar">
+            <div class="panel-body">
+              <span class="panel-no">04</span>
+              <h3>Lounge bar</h3>
+              <p>Local wines, coffee and quiet music until midnight.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <img src="https://images.unsplash.com/photo-1607816420124-038873dbd26b?auto=format&fit=crop&w=1200&q=80" alt="Swimming pool next to a building">
+            <div class="panel-body">
+              <span class="panel-no">05</span>
+              <h3>Garden pool</h3>
+              <p>A shallow family pool in the shade of the garden.</p>
+            </div>
+          </article>
+        </div>
+
+        <ul class="amenities reveal">
+          <li><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0" /><circle cx="12" cy="19" r="1" /></svg>Fast Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 3c-3 4-3 6 0 9 3-3 3-5 0-9Z" /><path d="M5 14c3 0 5 1.5 7 4 2-2.5 4-4 7-4" /><path d="M4 20h16" /></svg>Spa and sauna</li>
+          <li><svg viewBox="0 0 24 24"><path d="M6 6v12M18 6v12M3 9v6M21 9v6M6 12h12" /></svg>Fitness room</li>
+          <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 16V8h4a2.5 2.5 0 0 1 0 5H9" /></svg>Free parking</li>
+          <li><svg viewBox="0 0 24 24"><path d="M2 16l20-8-3 9-6-2-3 4v-5l9-6" /></svg>Airport transfer</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>24 h reception</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="booking section" id="book">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Booking</p>
+            <h2>Plan your <em>stay with us.</em></h2>
+          </div>
+          <p class="head-note">Choose a room, a day and how long you stay. Your summary updates as you go.</p>
+        </div>
+
+        <div class="booking-grid reveal">
+          <form class="book-form" id="bookForm" novalidate>
+            <div class="field">
+              <span class="field-label">Room</span>
+              <div class="dropdown" id="roomSelect">
+                <button type="button" class="dropdown-btn">
+                  <span class="dropdown-value">Deluxe King</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </button>
+                <ul class="dropdown-list">
+                  <li data-name="Classic Room" data-price="140" data-img="photo-1631049421450-348ccd7f8949">Classic Room<span>$140</span></li>
+                  <li data-name="Twin Room" data-price="160" data-img="photo-1680210851458-b7dc5685e06e">Twin Room<span>$160</span></li>
+                  <li data-name="Garden Room" data-price="180" data-img="photo-1548612486-94d786319018">Garden Room<span>$180</span></li>
+                  <li data-name="Deluxe King" data-price="210" data-img="photo-1702255489644-392758161f1f" class="selected">Deluxe King<span>$210</span></li>
+                  <li data-name="Twilight Suite" data-price="290" data-img="photo-1629078691977-dc51747c0263">Twilight Suite<span>$290</span></li>
+                  <li data-name="Evening Suite" data-price="340" data-img="photo-1552858725-2758b5fb1286">Evening Suite<span>$340</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Check-in day</span>
+              <div class="days" id="dayPicker"></div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <span class="field-label">Nights</span>
+                <div class="stepper">
+                  <button type="button" data-target="nights" data-step="-1" aria-label="Fewer nights">−</button>
+                  <b id="nights">2</b>
+                  <button type="button" data-target="nights" data-step="1" aria-label="More nights">+</button>
+                </div>
+              </div>
+              <div class="field">
+                <span class="field-label">Guests</span>
+                <div class="stepper">
+                  <button type="button" data-target="guests" data-step="-1" aria-label="Fewer guests">−</button>
+                  <b id="guests">2</b>
+                  <button type="button" data-target="guests" data-step="1" aria-label="More guests">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field-label" for="guestName">Full name</label>
+                <input type="text" id="guestName" placeholder="Your name">
+              </div>
+              <div class="field">
+                <label class="field-label" for="guestEmail">Email</label>
+                <input type="text" id="guestEmail" placeholder="you@example.com">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-brass btn-full">Add to my stay</button>
+          </form>
+
+          <aside class="summary">
+            <div class="summary-img">
+              <img id="sumImg" src="https://images.unsplash.com/photo-1702255489644-392758161f1f?auto=format&fit=crop&w=900&q=80" alt="Selected room">
+            </div>
+            <div class="summary-body">
+              <p class="eyebrow eyebrow-light">Your summary</p>
+              <h3 id="sumRoom">Deluxe King</h3>
+              <ul class="sum-list">
+                <li><span>Check-in</span><b id="sumDay">—</b></li>
+                <li><span>Nights</span><b id="sumNights">2</b></li>
+                <li><span>Guests</span><b id="sumGuests">2</b></li>
+                <li><span>Price per night</span><b id="sumPrice">$210</b></li>
+              </ul>
+              <div class="sum-total">
+                <span>Total</span>
+                <b id="sumTotal">$420</b>
+              </div>
+              <p class="sum-note">Taxes and breakfast included. Free cancellation up to 48 hours before arrival.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="offers section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Seasonal offers</p>
+            <h2>A little extra <em>this winter.</em></h2>
+          </div>
+        </div>
+
+        <div class="offer-grid">
+          <article class="offer reveal">
+            <span class="offer-tag">Long stay</span>
+            <h3>Stay 4 nights, pay for 3</h3>
+            <p>Book four nights or more in any room and the last night is on us.</p>
+            <span class="offer-code">Code: SLOW4</span>
+          </article>
+          <article class="offer reveal">
+            <span class="offer-tag">Couples</span>
+            <h3>Dinner by the sea</h3>
+            <p>A three-course dinner for two on the terrace with every suite booking.</p>
+            <span class="offer-code">Code: SUNSET</span>
+          </article>
+          <article class="offer reveal">
+            <span class="offer-tag">Early bird</span>
+            <h3>15% off summer 2027</h3>
+            <p>Book before the end of January and save on all stays in June and July.</p>
+            <span class="offer-code">Code: EARLY15</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq section">
+      <div class="container faq-grid">
+        <div class="reveal">
+          <p class="eyebrow">Good to know</p>
+          <h2>Before <em>you arrive.</em></h2>
+        </div>
+        <div class="faq-list reveal">
+          <details>
+            <summary>Is breakfast included?</summary>
+            <p>Yes. Breakfast is included in every room rate and served on the sea terrace from 7:00 to 11:00.</p>
+          </details>
+          <details>
+            <summary>Can I check in early?</summary>
+            <p>When your room is ready we are happy to give it to you early. You can always leave your bags with us and go to the pool.</p>
+          </details>
+          <details>
+            <summary>Do you allow pets?</summary>
+            <p>Small dogs are welcome in garden rooms for $20 per night. Please tell us when you book.</p>
+          </details>
+          <details>
+            <summary>How do I cancel my booking?</summary>
+            <p>Cancellation is free up to 48 hours before arrival. Sign in to your account to change or cancel a stay.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="account section" id="account">
+      <div class="container account-grid">
+        <div class="account-text reveal">
+          <p class="eyebrow eyebrow-light">Aurelia Circle</p>
+          <h2>Sign in for <em>member rates.</em></h2>
+          <p>Members save 10% on every stay, get a late check-out and can manage their bookings in one place.</p>
+          <ul class="perks">
+            <li>10% member discount</li>
+            <li>Late check-out until 14:00</li>
+            <li>Welcome drink on arrival</li>
+          </ul>
+        </div>
+
+        <div class="account-card reveal">
+          <form class="login" id="loginForm" novalidate>
+            <h3>Welcome back</h3>
+            <label for="loginName">Name</label>
+            <input type="text" id="loginName" placeholder="Your name" autocomplete="username">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password">
+            <button type="submit" class="btn btn-brass btn-full">Sign in</button>
+          </form>
+
+          <div class="welcome" id="welcome">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+            <h3>You are in</h3>
+            <p id="welcomeText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#home" class="logo logo-light">
+          <svg viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M10 52V26a20 20 0 0 1 40 0v26" />
+            <path d="M18 52V28a12 12 0 0 1 24 0v24" />
+            <path d="M4 52h52" />
+          </svg>
+          <span>Aurelia</span>
+        </a>
+        <nav class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#rooms">Rooms</a>
+          <a href="#floor">Floor plan</a>
+          <a href="#facilities">Facilities</a>
+          <a href="#book">Booking</a>
+          <a href="#account">Account</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aurelia Hotel. A quiet place by the sea.</p>
+        <p>Photos from Unsplash</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart" id="cart" aria-label="Your stay">
+    <div class="cart-head">
+      <h3>Your stay</h3>
+      <button class="cart-close" id="cartClose" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </div>
+    <p class="cart-empty" id="cartEmpty">Nothing booked yet. Choose a room to start your stay.</p>
+    <ul class="cart-items" id="cartItems"></ul>
+    <div class="cart-foot">
+      <div class="cart-total">
+        <span>Total</span>
+        <b id="cartTotal">$0</b>
+      </div>
+      <button class="btn btn-brass btn-full" id="checkout" type="button">Confirm booking</button>
+    </div>
+  </aside>
+
+  <div class="alert" id="alert" hidden>
+    <div class="alert-box" role="alertdialog" aria-labelledby="alertTitle">
+      <span class="alert-icon" id="alertIcon">!</span>
+      <h3 id="alertTitle">Title</h3>
+      <p id="alertText">Message</p>
+      <button type="button" id="alertButton">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
